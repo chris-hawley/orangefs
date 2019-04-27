@@ -263,7 +263,11 @@ char *PVFS_expand_path(const char *path, int skip_last_lookup)
         else
         {
             /* this is for non PVFS space */
+            #ifdef SYS_readlink
             n = syscall(SYS_readlink,
+            #else
+            n = syscall(SYS_readlinkat,
+            #endif
                         Ppath->expanded_path,
                         link_path,
                         PVFS_PATH_MAX);
@@ -280,7 +284,11 @@ char *PVFS_expand_path(const char *path, int skip_last_lookup)
                 /* else not a sym link 
                  * check to see if it is a valid object
                  */
+                #ifdef SYS_stat
                 n = syscall(SYS_stat,
+                #else
+                n = syscall(SYS_statx,
+                #endif
                             Ppath->expanded_path,
                             &sbuf);
                 if (n < 0)

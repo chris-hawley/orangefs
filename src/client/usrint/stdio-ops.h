@@ -13,6 +13,49 @@
 #ifndef STDIO_OPS_H
 #define STDIO_OPS_H
 
+#ifndef _IO_MAGIC
+
+struct _IO_marker {
+  struct _IO_marker *_next;
+  struct _IO_FILE *_sbuf;
+  /* If _pos >= 0
+ it points to _buf->Gbase()+_pos. FIXME comment */
+  /* if _pos < 0, it points to _buf->eBptr()+_pos. FIXME comment */
+  int _pos;
+#if 0
+    void set_streampos(streampos sp) { _spos = sp; }
+    void set_offset(int offset) { _pos = offset; _spos = (streampos)(-2); }
+  public:
+    streammarker(streambuf *sb);
+    ~streammarker();
+    int saving() { return  _spos == -2; }
+    int delta(streammarker&);
+    int delta();
+#endif
+};
+
+#define _IO_MAGIC 0xFBAD0000 /* Magic number */
+#define _OLD_STDIO_MAGIC 0xFABC0000 /* Emulate old stdio. */
+#define _IO_MAGIC_MASK 0xFFFF0000
+#define _IO_USER_BUF 1 /* User owns buffer; don't delete it on close. */
+#define _IO_UNBUFFERED 2
+#define _IO_NO_READS 4 /* Reading not allowed */
+#define _IO_NO_WRITES 8 /* Writing not allowd */
+#define _IO_DELETE_DONT_CLOSE 0x40 /* Don't call close(_fileno) on cleanup. */
+#define _IO_LINKED 0x80 /* Set if linked (using _chain) to streambuf::_list_all.*/
+#define _IO_IN_BACKUP 0x100
+#define _IO_LINE_BUF 0x200
+#define _IO_TIED_PUT_GET 0x400 /* Set if put and get pointer logicly tied. */
+#define _IO_CURRENTLY_PUTTING 0x800
+#define _IO_IS_APPENDING 0x1000
+#define _IO_IS_FILEBUF 0x2000
+#define _IO_BAD_SEEN 0x4000
+#define _IO_USER_LOCK 0x8000
+
+#define _IO_FILE struct _IO_FILE
+
+#endif
+
 struct stdio_ops_s
 {
     FILE *(*fopen)(const char *path, const char *mode);
