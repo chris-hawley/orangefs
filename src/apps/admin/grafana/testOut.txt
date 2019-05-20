@@ -1,0 +1,24 @@
+PVFS2 I/O server counters
+==================================================
+
+SERVER: tcp://192.168.122.244:3334
+
+data read: 	XXXX	XXXX	XXXX	XXXX	0.0
+data write: 	XXXX	XXXX	XXXX	XXXX	0.0
+meta read: 	XXXX	XXXX	XXXX	XXXX	187
+meta write: 	XXXX	XXXX	XXXX	XXXX	0
+dspace ops: 	XXXX	XXXX	XXXX	XXXX	0
+keyval ops: 	XXXX	XXXX	XXXX	XXXX	0
+scheduled: 	XXXX	XXXX	XXXX	XXXX	0
+requests: 	XXXX	XXXX	XXXX	XXXX	0
+small reads: 	XXXX	XXXX	XXXX	XXXX	0
+small writes: 	XXXX	XXXX	XXXX	XXXX	0
+flow reads: 	XXXX	XXXX	XXXX	XXXX	0
+flow writes: 	XXXX	XXXX	XXXX	XXXX	0
+creates: 	XXXX	XXXX	XXXX	XXXX	0
+removes: 	XXXX	XXXX	XXXX	XXXX	0
+mkdirs:  	XXXX	XXXX	XXXX	XXXX	0
+rmdir:   	XXXX	XXXX	XXXX	XXXX	0
+getattrs: 	XXXX	XXXX	XXXX	XXXX	0
+setattrs: 	XXXX	XXXX	XXXX	XXXX	0
+timestep: 	XXXX	XXXX	XXXX	XXXX	3602781763
