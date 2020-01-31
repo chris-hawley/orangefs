@@ -1091,7 +1091,7 @@ pvfs_descriptor *iocommon_open(const char *path,
             int mlen = dlen + plen + 2;
             tmp_path = (char *)malloc(mlen);
             strncpy(tmp_path, pdir->s->dpath, dlen + 1);
-            strncat(tmp_path, "/", 1);
+            strcat(tmp_path, "/");
             strncat(tmp_path, path, plen);
             Ppath = PVFS_new_path(tmp_path);
 
@@ -1194,7 +1194,7 @@ pvfs_descriptor *iocommon_open(const char *path,
             int mlen = dlen + plen + 2;
             tmp_path = (char *)malloc(mlen);
             strncpy(tmp_path, pdir->s->dpath, dlen + 1);
-            strncat(tmp_path, "/", 1);
+            strcat(tmp_path, "/");
             strncat(tmp_path, directory, plen);
             Ppath = PVFS_new_path(tmp_path);
 
@@ -1338,7 +1338,7 @@ finish:
             int mlen = dlen + plen + 2;
             tpath = (char *)malloc(mlen);
             strncpy(tpath, pdir->s->dpath, dlen + 1);
-            strncat(tpath, "/", 1);
+            strcat(tpath, "/");
             strncat(tpath, path, plen);
             pd->s->dpath = pvfs_dpath_insert(tpath);
             free(tpath);

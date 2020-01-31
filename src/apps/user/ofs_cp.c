@@ -874,7 +874,7 @@ static int parse_args(int argc, char *argv[], struct cp_options *user_opts)
                 perror("getcwd");
                 goto exit_err;
             }
-            strncat(dest_path_buffer, "/", 1);
+            strcat(dest_path_buffer, "/");
             len = strnlen(argv[argc - 1], PATH_MAX);
             strncat(dest_path_buffer, argv[argc - 1], len);
             /* code in main ensures there is a trailing slash */

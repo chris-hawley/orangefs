@@ -2709,7 +2709,7 @@ DOTCONF_CB(get_flow_buffers_per_flow)
 
 DOTCONF_CB(get_attr_cache_keywords_list)
 {
-    int i = 0, len = 0;
+    int i = 0;
     char buf[512] = {0};
     char *ptr = buf;
     const char * rtok;
@@ -2735,10 +2735,9 @@ DOTCONF_CB(get_attr_cache_keywords_list)
             rtok = replace_old_keystring(tokens[j]);
             if(!strstr(buf, rtok))
             {
-                len = strlen(rtok);
-                strncat(ptr, rtok, len);
-                strncat(ptr, ",", 1);
-                ptr += len + 1;
+                strcat(ptr, rtok);
+                strcat(ptr, ",");
+                ptr += strlen(rtok) + 1;
             }
         }
        
@@ -2758,10 +2757,9 @@ DOTCONF_CB(get_attr_cache_keywords_list)
             rtok = replace_old_keystring(tokens[j]);
             if(!strstr(buf, rtok))
             {
-                len = strlen(rtok);
-                strncat(ptr, rtok, len);
-                strncat(ptr, ",", 1);
-                ptr += len + 1;
+                strcat(ptr, rtok);
+                strcat(ptr, ",");
+                ptr += strlen(rtok) + 1;
             }
         }
 
